@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE COMPANION | 臺灣專業旅伴・生活意義的實踐者</title>
+    <title>THE COMPANION | 專業臺灣旅伴・行程紀錄・透明租賃</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,8 +13,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'brand-green': '#1B3C35', // 深邃森林綠
-                        'brand-gold': '#C5A059',  // 冒險金
+                        'brand-green': '#1B3C35', // 深森林綠 (信賴感)
+                        'brand-gold': '#C5A059',  // 暖陽金 (專業感)
                         'brand-bg': '#FDFBF7',    // 吉卜力暖紙色
                     },
                     fontFamily: {
@@ -27,188 +27,219 @@
     </script>
 
     <style type="text/css">
-        body { background-color: #FDFBF7; color: #2C2C2C; overflow-x: hidden; }
-        
-        /* 吉卜力畫風增強濾鏡 */
-        .ghibli-vibe { 
-            filter: saturate(1.2) contrast(1.05) brightness(1.05) sepia(0.1); 
-            transition: all 0.8s ease;
+        body { background-color: #FDFBF7; color: #2C2C2C; }
+        .ghibli-img { 
+            filter: saturate(1.1) contrast(1.02) brightness(1.02); 
+            transition: transform 0.8s ease;
         }
-        
-        /* 網格線條 - 參考 FRENTA */
-        .grid-line { border: 0.5px solid rgba(27, 60, 53, 0.12); }
-
-        /* 浮現動畫 */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* 標語特殊排版 */
-        .mitty-quote {
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
+        .bento-card {
+            background: white;
+            border: 1px solid rgba(27, 60, 53, 0.1);
+            transition: all 0.4s ease;
         }
-        @media (max-width: 768px) {
-            .mitty-quote { writing-mode: horizontal-tb; }
+        .bento-card:hover {
+            border-color: #1B3C35;
+            box-shadow: 0 10px 30px rgba(27, 60, 53, 0.05);
         }
+        .text-kern { letter-spacing: 0.1em; }
+        .nav-link::after {
+            content: ''; width: 0; height: 1px; display: block; background: #1B3C35;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-[100] bg-brand-bg/90 backdrop-blur-md border-b grid-line">
-        <div class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center">
-            <div class="flex flex-col">
-                <span class="text-2xl font-serif font-bold text-brand-green tracking-tighter italic">THE COMPANION</span>
-                <span class="text-[9px] tracking-[0.4em] text-brand-gold uppercase font-bold">Life is About Courage</span>
+    <!-- 導航列 -->
+    <nav class="fixed w-full z-[100] bg-brand-bg/90 backdrop-blur-md border-b border-brand-green/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-serif font-bold text-brand-green tracking-tighter">THE COMPANION</span>
+                <span class="hidden md:inline-block text-[10px] px-2 py-1 border border-brand-green/20 text-brand-green/60 tracking-widest uppercase">Professional Guide</span>
             </div>
-            <div class="hidden md:flex space-x-12 text-[10px] font-bold tracking-[0.3em] uppercase text-brand-green/70">
-                <a href="#philosophy" class="hover:text-brand-gold transition">核心價值</a>
-                <a href="#services" class="hover:text-brand-gold transition">服務矩陣</a>
-                <a href="#gallery" class="hover:text-brand-gold transition">影像紀實</a>
-                <a href="#contact" class="hover:text-brand-gold transition text-brand-green border-b border-brand-green">預約旅程</a>
+            <div class="hidden md:flex space-x-10 text-[11px] font-medium tracking-[0.2em] uppercase">
+                <a href="#about" class="nav-link">經營理念</a>
+                <a href="#services" class="nav-link">服務內容</a>
+                <a href="#booking" class="nav-link">預約諮詢</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section: 融入電影經典語錄 -->
-    <section class="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
-            <!-- 左側：品牌標題 -->
-            <div class="lg:col-span-7 z-10">
-                <h1 class="text-6xl md:text-[90px] font-serif leading-none text-brand-green mb-12 reveal">
-                    去看看世界，<br>
-                    <span class="text-brand-gold italic">感受一切。</span>
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex flex-col justify-center px-6 pt-20">
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <div class="inline-block px-3 py-1 bg-brand-green/5 text-brand-green text-xs tracking-widest">
+                    專業。純粹。透明。
+                </div>
+                <h1 class="text-5xl md:text-7xl font-serif leading-tight text-brand-green">
+                    在臺灣，<br>與值得信賴的<br><span class="text-brand-gold italic">旅伴同行。</span>
                 </h1>
-                
-                <!-- 核心語錄：白日夢冒險王 -->
-                <div class="border-l-4 border-brand-gold pl-8 py-2 max-w-xl reveal">
-                    <p class="text-lg md:text-xl font-serif leading-relaxed text-brand-green/80 italic">
-                        「去看看世界，去面對危險，去打破局限，去拉近距離，去找到彼此並感受一切。這就是『生活』的意義。」
-                    </p>
+                <p class="max-w-md text-sm leading-loose text-gray-600 tracking-widest">
+                    不涉及灰色地帶，我們提供純粹的陪伴服務。從專業嚮導、汽機車隨行到影像紀錄，為您的個人旅行或團隊出訪，量身打造專業的臺灣在地體驗。
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#services" class="bg-brand-green text-white px-8 py-4 text-xs tracking-[0.2em] hover:bg-opacity-90 transition">探索服務</a>
+                    <a href="#booking" class="border border-brand-green text-brand-green px-8 py-4 text-xs tracking-[0.2em] hover:bg-brand-green hover:text-white transition">開始預約</a>
                 </div>
             </div>
-
-            <!-- 右側：吉卜力風臺灣意象 (修正圖片連結) -->
-            <div class="lg:col-span-5 relative reveal">
-                <div class="aspect-[3/4] overflow-hidden shadow-2xl rounded-sm">
-                    <!-- 使用 Unsplash 上帶有臺灣山巒與冒險感的圖片 -->
-                    <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1000&q=80" 
-                         class="ghibli-vibe w-full h-full object-cover scale-110" alt="Adventure">
+            <div class="relative">
+                <div class="aspect-[4/5] overflow-hidden rounded-sm shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1528164344705-47542687990d?auto=format&fit=crop&w=1000&q=80" 
+                         class="ghibli-img w-full h-full object-cover" alt="Taiwan Journey">
                 </div>
-                <div class="absolute -bottom-10 -right-10 hidden md:block w-64 h-64 border grid-line -z-10"></div>
+                <!-- 裝飾方塊 -->
+                <div class="absolute -bottom-6 -left-6 bg-brand-gold w-32 h-32 -z-10 opacity-20"></div>
             </div>
         </div>
     </section>
 
-    <!-- 服務與價值：專業、純粹、透明 -->
-    <section id="philosophy" class="py-32 bg-brand-green text-brand-bg px-6">
-        <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                <div class="reveal">
-                    <h2 class="text-xs tracking-[0.6em] uppercase text-brand-gold mb-6 font-bold">Our Philosophy</h2>
-                    <p class="text-3xl font-serif leading-snug">我們拒絕平庸的觀光，<br>我們提供真實的連接。</p>
-                    <p class="mt-8 text-brand-bg/60 leading-loose font-light">
-                        在 THE COMPANION，我們重新定義「伴遊」。這不是一個模糊的地帶，而是一個專業的職位。我們是您的安全保障、您的攝影師、您的司機，更是您打破局限、探索臺灣深處的窗口。
-                    </p>
-                </div>
-                <div class="grid grid-cols-2 gap-4 reveal">
-                    <div class="p-8 border border-brand-bg/20 text-center">
-                        <span class="block text-2xl mb-2">100%</span>
-                        <span class="text-[10px] tracking-widest uppercase">純粹陪伴</span>
-                    </div>
-                    <div class="p-8 border border-brand-bg/20 text-center">
-                        <span class="block text-2xl mb-2">PRO</span>
-                        <span class="text-[10px] tracking-widest uppercase">專業嚮導</span>
-                    </div>
-                </div>
+    <!-- 核心價值敘述 -->
+    <section id="about" class="py-24 bg-brand-green text-brand-bg px-6 text-center">
+        <div class="max-w-3xl mx-auto space-y-6">
+            <h2 class="text-xs tracking-[0.5em] uppercase opacity-60">Core Value</h2>
+            <p class="text-2xl md:text-3xl font-serif leading-relaxed">
+                「我們相信，最棒的旅行不只是看風景，而是與對的人一起感受當下。」
+            </p>
+            <div class="pt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-[11px] tracking-widest uppercase opacity-80 font-light">
+                <div>全程透明合約</div>
+                <div>專業汽機車執照</div>
+                <div>非灰色地帶陪伴</div>
             </div>
         </div>
     </section>
 
-    <!-- 服務矩陣 (Bento Grid) -->
+    <!-- 服務項目 Bento Grid -->
     <section id="services" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-            
-            <!-- 旅行伴遊/純旅伴 -->
-            <div class="md:col-span-2 md:row-span-2 bg-white p-12 border grid-line reveal flex flex-col justify-between group">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+                <h3 class="text-xs tracking-[0.5em] uppercase text-brand-gold mb-2 font-bold">Services</h3>
+                <h2 class="text-4xl font-serif text-brand-green">專業服務矩陣</h2>
+            </div>
+            <p class="text-xs text-gray-500 max-w-xs leading-relaxed">從個人旅伴租借到團隊後勤，我們涵蓋了旅程中所有的軟性需求與硬性支持。</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- 專業嚮導 -->
+            <div class="md:col-span-2 bento-card p-10 flex flex-col justify-between aspect-video md:aspect-auto">
                 <div>
-                    <h3 class="text-3xl font-serif text-brand-green mb-6">專業旅伴租借<br><span class="text-sm tracking-widest text-brand-gold">Professional Companionship</span></h3>
-                    <p class="text-gray-500 leading-loose text-sm italic">
-                        提供高素養、具備深度談吐的專業夥伴。無論是商務晚宴的得體隨行，還是個人深度旅行的溫暖陪伴，我們確保全程透明、安全且純粹。
+                    <span class="text-brand-gold text-2xl mb-4 block">01</span>
+                    <h4 class="text-2xl font-serif mb-4 text-brand-green">專業隨行嚮導 / 旅伴</h4>
+                    <p class="text-sm text-gray-600 leading-loose max-w-md">
+                        純粹的旅伴租借服務。無論是獨旅需要陪伴、或是需要專業人士帶領深入部落與巷弄，我們提供高素養、無灰色地帶的優質旅伴。
                     </p>
                 </div>
-                <div class="mt-12 overflow-hidden h-64">
-                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=800&q=80" class="ghibli-vibe w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                <div class="mt-8 flex items-center space-x-2 text-[10px] text-brand-green/60 tracking-widest uppercase">
+                    <span>Individual</span> • <span>Trust</span> • <span>Pure</span>
                 </div>
-            </div>
-
-            <!-- 汽機車配套 -->
-            <div class="md:col-span-2 bg-brand-bg p-12 border grid-line reveal group">
-                <div class="flex justify-between items-start">
-                    <h3 class="text-xl font-serif text-brand-green">汽機車移動支援</h3>
-                    <span class="text-brand-gold">Drive</span>
-                </div>
-                <p class="mt-4 text-xs text-gray-500 leading-relaxed">專業執照駕駛，無論是重機環島還是商務車接送，讓移動本身成為一種享受。</p>
             </div>
 
             <!-- 影像紀錄 -->
-            <div class="bg-white p-12 border grid-line reveal group">
-                <h3 class="text-xl font-serif text-brand-green mb-4 text-center">旅行紀錄</h3>
-                <div class="aspect-square bg-gray-50 overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=400&q=80" class="ghibli-vibe w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+            <div class="bento-card p-10 aspect-square flex flex-col justify-between">
+                <div>
+                    <span class="text-brand-gold text-2xl mb-4 block">02</span>
+                    <h4 class="text-xl font-serif mb-2">旅行生活紀錄</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        專業隨行攝影與剪輯。將您在旅途中的自然互動，轉化為吉卜力畫風般的電影感紀錄。
+                    </p>
                 </div>
+                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=300&q=80" class="w-full h-24 object-cover grayscale opacity-30 mt-4">
+            </div>
+
+            <!-- 汽機車配套 -->
+            <div class="bento-card p-10 aspect-square flex flex-col justify-between">
+                <div>
+                    <span class="text-brand-gold text-2xl mb-4 block">03</span>
+                    <h4 class="text-xl font-serif mb-2">移動配套支援</h4>
+                    <p class="text-xs text-gray-500 leading-relaxed">
+                        提供專業汽機車駕駛服務，從環島公路旅行到城市穿梭，確保移動過程安全且自在。
+                    </p>
+                </div>
+                <div class="text-[10px] border-t pt-4 border-dashed border-gray-200 uppercase tracking-tighter">Car & Motorcycle Support</div>
             </div>
 
             <!-- 團隊與行程 -->
-            <div class="bg-brand-green text-white p-12 reveal flex flex-col justify-center">
-                <h3 class="text-lg font-serif mb-4">團隊同行<br>& 行程規劃</h3>
-                <p class="text-[10px] opacity-70 leading-relaxed uppercase tracking-widest">Team Support & Custom Itinerary</p>
+            <div class="md:col-span-2 bento-card p-10 flex flex-col md:flex-row gap-10">
+                <div class="flex-1 flex flex-col justify-between">
+                    <div>
+                        <span class="text-brand-gold text-2xl mb-4 block">04</span>
+                        <h4 class="text-xl font-serif mb-2">團隊同行與行程定製</h4>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            針對多人團隊提供後勤支援，並協助深度行程排定。避開觀光陷阱，只走最地道的臺灣脈絡。
+                        </p>
+                    </div>
+                    <div class="mt-6">
+                        <a href="#booking" class="text-xs underline underline-offset-8 text-brand-green hover:text-brand-gold transition">了解方案細節 →</a>
+                    </div>
+                </div>
+                <div class="flex-1 bg-gray-100 rounded-sm overflow-hidden min-h-[150px]">
+                    <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover ghibli-img">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 影像藝廊：感受一切 (修正圖片連結) -->
-    <section id="gallery" class="py-20 bg-white">
-        <div class="px-6 grid grid-cols-2 md:grid-cols-5 gap-2">
-            <div class="reveal"><img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=600" class="ghibli-vibe grayscale hover:grayscale-0 transition aspect-[3/4] object-cover"></div>
-            <div class="reveal pt-8"><img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=600" class="ghibli-vibe grayscale hover:grayscale-0 transition aspect-[3/4] object-cover"></div>
-            <div class="reveal"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600" class="ghibli-vibe grayscale hover:grayscale-0 transition aspect-[3/4] object-cover"></div>
-            <div class="reveal pt-8"><img src="https://images.unsplash.com/photo-1542359649-31e03ad4d92c?auto=format&fit=crop&w=600" class="ghibli-vibe grayscale hover:grayscale-0 transition aspect-[3/4] object-cover"></div>
-            <div class="reveal"><img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=600" class="ghibli-vibe grayscale hover:grayscale-0 transition aspect-[3/4] object-cover"></div>
+    <!-- 誠信聲明 -->
+    <section class="py-20 border-y border-brand-green/10 px-6">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="w-24 h-24 border border-brand-gold flex items-center justify-center rotate-45 flex-shrink-0">
+                <span class="-rotate-45 text-brand-gold font-serif font-bold">Pure</span>
+            </div>
+            <div>
+                <h3 class="text-xl font-serif text-brand-green mb-4">誠信與規範聲明</h3>
+                <p class="text-sm text-gray-500 leading-loose">
+                    THE COMPANION 堅守服務邊界。我們提供的伴旅租借服務嚴禁任何形式的灰色地帶交易。所有合作夥伴均經過背景審核，並簽署專業守則。我們專注於提供高品質的旅行協助、文化導覽與生活紀錄，建立健康且受尊重的旅伴市場。
+                </p>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-brand-bg py-32 px-6 border-t grid-line">
-        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
-            <h2 class="text-4xl md:text-7xl font-serif text-brand-green mb-12 reveal">去找到彼此，<br>然後找到生活。</h2>
-            <div class="space-y-8 reveal">
-                <a href="mailto:hello@thecompanion.tw" class="text-2xl font-light border-b border-brand-gold pb-2 text-brand-green hover:tracking-widest transition-all">hello@thecompanion.tw</a>
-                <p class="text-[10px] tracking-[0.5em] text-gray-400 uppercase">Taiwan / Taipei / Global Travel Support</p>
-            </div>
-            
-            <div class="mt-32 w-full flex justify-between items-end text-[9px] text-gray-400 tracking-widest uppercase">
-                <p>© 2024 THE COMPANION. ALL RIGHTS RESERVED.</p>
-                <div class="flex space-x-8">
-                    <a href="#">Instagram</a>
-                    <a href="#">Privacy Policy</a>
+    <footer id="booking" class="bg-brand-bg pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 border-b border-brand-green/10 pb-24">
+            <div>
+                <h2 class="text-4xl md:text-6xl font-serif text-brand-green mb-10 leading-tight">準備好探索<br>不一樣的臺灣嗎？</h2>
+                <div class="space-y-4">
+                    <p class="text-xs tracking-[0.2em] text-gray-500 uppercase">Contact us at</p>
+                    <a href="mailto:contact@thecompanion.tw" class="text-2xl font-light text-brand-green hover:text-brand-gold transition border-b border-brand-green pb-2">contact@thecompanion.tw</a>
                 </div>
             </div>
+            <div class="grid grid-cols-2 gap-8 text-[11px] tracking-[0.2em] uppercase text-brand-green/60">
+                <div class="space-y-6">
+                    <p class="font-bold text-brand-green">Follow Us</p>
+                    <a href="#" class="block hover:text-brand-gold transition">Instagram</a>
+                    <a href="#" class="block hover:text-brand-gold transition">Youtube</a>
+                </div>
+                <div class="space-y-6">
+                    <p class="font-bold text-brand-green">Location</p>
+                    <p>Taipei HQ</p>
+                    <p>Kaohsiung Office</p>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 tracking-ultra uppercase gap-4">
+            <p>&copy; 2024 THE COMPANION TAIWAN. 專業旅伴與行程顧問.</p>
+            <p>Static Site Generated for GitHub Pages</p>
         </div>
     </footer>
 
     <script>
-        // 滾動觀察器
+        // 簡單的進入動畫
+        const observerOptions = { threshold: 0.15 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
             });
-        }, { threshold: 0.1 });
+        }, observerOptions);
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
     </script>
 </body>
 </html>
