@@ -1,247 +1,255 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>台灣旅遊伴遊・專人接送服務</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>探索台灣｜健康新鮮旅遊伴遊服務</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --primary: #007AFF;
-      --accent: #FF6F61;
-      --bg: #F6F8FA;
-      --text: #222;
-      --line: #06C755;
-    }
+<style>
+:root{
+  --green:#2ECC71;
+  --orange:#FFA500;
+  --yellow:#FFD966;
+  --blue:#00A8E8;
+  --bg:#F7FFF9;
+  --text:#222;
+  --line:#06C755;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+*{box-sizing:border-box;margin:0;padding:0}
 
-    body {
-      font-family: 'Noto Sans TC', sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
+body{
+  font-family:'Noto Sans TC',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+a{text-decoration:none;color:inherit}
 
-    header {
-      background: linear-gradient(120deg, #003b8f, #007AFF);
-      color: #fff;
-      padding: 100px 20px;
-      text-align: center;
-    }
+header{
+  background:
+    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee");
+  background-size:cover;
+  background-position:center;
+  color:#fff;
+  text-align:center;
+  padding:120px 20px;
+}
 
-    header h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.6rem;
-      margin-bottom: 16px;
-    }
+header h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:3rem;
+  margin-bottom:16px;
+}
 
-    header p {
-      font-size: 1.1rem;
-      opacity: 0.9;
-      margin-bottom: 32px;
-    }
+header p{
+  font-size:1.2rem;
+  margin-bottom:32px;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 14px 28px;
-      border-radius: 40px;
-      font-weight: 500;
-      transition: all 0.3s ease;
-    }
+.btn{
+  display:inline-block;
+  padding:14px 32px;
+  border-radius:40px;
+  font-weight:500;
+  background:var(--orange);
+  color:#fff;
+  transition:.3s;
+}
 
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
+.btn:hover{transform:translateY(-3px);opacity:.9}
 
-    .btn-primary:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:90px 20px;
+}
 
-    section {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.title{
+  text-align:center;
+  margin-bottom:60px;
+}
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 60px;
-    }
+.title h2{
+  font-size:2.3rem;
+  margin-bottom:10px;
+}
 
-    .section-title h2 {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
+.title p{
+  color:#555;
+}
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 32px;
-    }
+/* Services */
+.services{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:32px;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      transition: transform 0.3s ease;
-    }
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:32px;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
 
-    .card:hover {
-      transform: translateY(-6px);
-    }
+.card h3{color:var(--green);margin-bottom:12px}
 
-    .card h3 {
-      margin-bottom: 12px;
-      color: var(--primary);
-    }
+/* Companions */
+.companions{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:32px;
+}
 
-    .card p {
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
+.companion{
+  background:#fff;
+  border-radius:22px;
+  padding:24px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
 
-    .line-link {
-      color: var(--line);
-      font-weight: 500;
-    }
+.companion img{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:50%;
+  margin-bottom:16px;
+}
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px;
-      text-align: center;
-    }
+.tag{
+  display:inline-block;
+  background:var(--yellow);
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:.8rem;
+  margin:4px;
+}
 
-    .step {
-      background: #fff;
-      padding: 30px;
-      border-radius: 16px;
-    }
+.line-link{
+  display:inline-block;
+  margin-top:14px;
+  color:var(--line);
+  font-weight:500;
+}
 
-    footer {
-      background: #111;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-    }
+/* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
 
-    footer p {
-      opacity: 0.8;
-      margin-top: 12px;
-      font-size: 0.9rem;
-    }
+.gallery img{
+  width:100%;
+  border-radius:18px;
+  transition:.3s;
+}
 
-    /* Floating LINE button */
-    .line-float {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      background: var(--line);
-      color: #fff;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 28px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-      transition: transform 0.3s ease;
-      z-index: 999;
-    }
+.gallery img:hover{transform:scale(1.05)}
 
-    .line-float:hover {
-      transform: scale(1.1);
-    }
-  </style>
+/* Footer */
+footer{
+  background:#111;
+  color:#fff;
+  text-align:center;
+  padding:60px 20px;
+}
+
+.line-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  background:var(--line);
+  color:#fff;
+  font-size:28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- Hero -->
-  <header>
-    <h1>探索台灣・專屬旅遊伴遊服務</h1>
-    <p>旅遊租借伴侶｜台灣伴遊｜私人接送｜客製行程排定</p>
-    <a class="btn btn-primary" href="https://line.me/R/ti/p/@095wdniw" target="_blank">
-      LINE 諮詢專屬旅程
-    </a>
-  </header>
+<header>
+<h1>世界那麼大，值得好好走一趟</h1>
+<p>「旅行不是為了逃離生活，而是讓生活不再逃離你。」</p>
+<a class="btn" href="https://line.me/R/ti/p/@095wdniw" target="_blank">LINE 開始規劃旅程</a>
+</header>
 
-  <!-- Services -->
-  <section>
-    <div class="section-title">
-      <h2>我們的服務</h2>
-      <p>貼心、安全、為你量身打造</p>
-    </div>
+<section>
+<div class="title">
+<h2>我們的服務</h2>
+<p>用陪伴，讓旅途更溫度</p>
+</div>
 
-    <div class="services">
-      <div class="card">
-        <h3>旅遊租借伴侶</h3>
-        <p>安排適合你的旅伴，陪你探索城市、文化與美食。</p>
-        <a class="line-link" href="https://line.me/R/ti/p/@095wdniw" target="_blank">LINE 了解更多 →</a>
-      </div>
+<div class="services">
+<div class="card"><h3>旅遊租借伴侶</h3><p>陪你聊天、拍照、探索城市。</p></div>
+<div class="card"><h3>台灣專業伴遊</h3><p>深入文化，走進在地生活。</p></div>
+<div class="card"><h3>私人接送</h3><p>安全舒適，移動也是享受。</p></div>
+<div class="card"><h3>客製行程</h3><p>只屬於你的台灣旅程。</p></div>
+</div>
+</section>
 
-      <div class="card">
-        <h3>台灣專業伴遊</h3>
-        <p>熟悉當地的專業伴遊，讓旅程更深入、更自在。</p>
-        <a class="line-link" href="https://line.me/R/ti/p/@095wdniw" target="_blank">LINE 諮詢 →</a>
-      </div>
+<section>
+<div class="title">
+<h2>伴遊人員</h2>
+<p>「有些風景，一個人看太安靜。」</p>
+</div>
 
-      <div class="card">
-        <h3>汽機車私人接送</h3>
-        <p>機場、市區、跨縣市，安全舒適的專人接送服務。</p>
-        <a class="line-link" href="https://line.me/R/ti/p/@095wdniw" target="_blank">立即詢問 →</a>
-      </div>
+<div class="companions">
+<div class="companion">
+<img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2">
+<h3>Amy</h3>
+<span class="tag">城市散步</span><span class="tag">美食</span>
+<div class="line-link">LINE 諮詢</div>
+</div>
 
-      <div class="card">
-        <h3>旅遊行程排定</h3>
-        <p>依你的喜好與時間，客製專屬台灣旅遊行程。</p>
-        <a class="line-link" href="https://line.me/R/ti/p/@095wdniw" target="_blank">開始規劃 →</a>
-      </div>
-    </div>
-  </section>
+<div class="companion">
+<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
+<h3>Leo</h3>
+<span class="tag">攝影</span><span class="tag">自然景點</span>
+<div class="line-link">LINE 諮詢</div>
+</div>
 
-  <!-- Steps -->
-  <section>
-    <div class="section-title">
-      <h2>服務流程</h2>
-    </div>
+<div class="companion">
+<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+<h3>Mia</h3>
+<span class="tag">文化導覽</span><span class="tag">夜市</span>
+<div class="line-link">LINE 諮詢</div>
+</div>
+</div>
+</section>
 
-    <div class="steps">
-      <div class="step">1️⃣ 加入 LINE 諮詢需求</div>
-      <div class="step">2️⃣ 客製旅程與報價</div>
-      <div class="step">3️⃣ 確認預約</div>
-      <div class="step">4️⃣ 輕鬆享受旅程</div>
-    </div>
-  </section>
+<section>
+<div class="title">
+<h2>台灣風景</h2>
+<p>「不是拍下風景，而是把回憶帶走。」</p>
+</div>
 
-  <!-- Footer -->
-  <footer>
-    <h3>立即加入 LINE 官方帳號</h3>
-    <p>@095wdniw</p>
-    <p>旅遊諮詢・行程規劃・即時回覆</p>
-  </footer>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+<img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429">
+<img src="https://images.unsplash.com/photo-1519817650390-64a93db511aa">
+<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
+</div>
+</section>
 
-  <!-- Floating LINE Button -->
-  <a class="line-float" href="https://line.me/R/ti/p/@095wdniw" target="_blank">
-    💬
-  </a>
+<footer>
+<h3>加入 LINE 官方帳號</h3>
+<p>@095wdniw｜即時旅遊諮詢</p>
+</footer>
+
+<a class="line-float" href="https://line.me/R/ti/p/@095wdniw" target="_blank">💬</a>
 
 </body>
 </html>
