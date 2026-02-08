@@ -1,119 +1,203 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-TW" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>THE COMPANION | 臺灣私人伴旅・隨行攝影</title>
+    
+    <!-- 加載字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', 'Noto Serif TC', serif; background-color: #fcfcfc; color: #1a1a1a; }
-        .grid-line { border: 0.5px solid rgba(0,0,0,0.08); }
-        .kerning { letter-spacing: 0.15em; }
-        .fade-in { animation: fadeIn 1.5s ease-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        'ultra': '.25em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        body { background-color: #ffffff; color: #1a1a1a; }
+        .grid-border { border: 0.5px solid rgba(0,0,0,0.1); }
+        .hero-gradient { background: linear-gradient(to bottom, #ffffff, #f9f9f9); }
+        /* 防止圖片未加載時的塌陷 */
+        .img-placeholder { background-color: #f0f0f0; }
+        /* 選單動畫 */
+        #mobile-menu { transition: all 0.3s ease-in-out; }
+        .hidden-menu { transform: translateY(-100%); opacity: 0; pointer-events: none; }
     </style>
 </head>
-<body class="antialiased">
+<body class="font-sans antialiased">
 
     <!-- 導航列 Navigation -->
-    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b grid-line flex justify-between items-center px-8 py-6">
-        <div class="text-xl font-bold tracking-tighter uppercase">The Companion</div>
-        <div class="hidden md:flex space-x-12 text-xs uppercase tracking-[0.3em]">
-            <a href="#services" class="hover:text-gray-400 transition">Services</a>
-            <a href="#gallery" class="hover:text-gray-400 transition">Gallery</a>
-            <a href="#about" class="hover:text-gray-400 transition">About</a>
-            <a href="#contact" class="hover:text-gray-400 transition">Booking</a>
+    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b grid-border">
+        <div class="max-w-[1440px] mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="text-xl font-bold tracking-tighter uppercase">The Companion</div>
+            
+            <!-- 桌面版選單 -->
+            <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-ultra font-semibold">
+                <a href="#services" class="hover:text-gray-400 transition">Services</a>
+                <a href="#gallery" class="hover:text-gray-400 transition">Gallery</a>
+                <a href="#about" class="hover:text-gray-400 transition">About</a>
+                <a href="#contact" class="hover:text-gray-400 transition">Booking</a>
+            </div>
+
+            <!-- 手機版漢堡按鈕 -->
+            <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5">
+                <span class="w-6 h-px bg-black"></span>
+                <span class="w-6 h-px bg-black"></span>
+            </button>
         </div>
     </nav>
 
+    <!-- 手機版全螢幕選單 -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[90] flex flex-col items-center justify-center space-y-8 hidden-menu md:hidden">
+        <a href="#services" class="mobile-link text-2xl font-serif">核心服務</a>
+        <a href="#gallery" class="mobile-link text-2xl font-serif">影像紀實</a>
+        <a href="#about" class="mobile-link text-2xl font-serif">關於我們</a>
+        <a href="#contact" class="mobile-link text-2xl font-serif">預約行程</a>
+    </div>
+
     <!-- 主視覺 Hero Section -->
-    <section class="min-h-screen pt-32 px-8 flex flex-col justify-between">
-        <div class="fade-in">
-            <h1 class="text-6xl md:text-8xl font-serif leading-tight">
-                再定義。<br>
-                <span class="pl-0 md:pl-24">臺灣旅行的溫度</span>
-            </h1>
-            <p class="mt-8 text-sm text-gray-500 kerning max-w-md">
-                不只是嚮導，是您的隨行攝影師，更是旅途中的知己。我們提供深度行程規劃與溫暖的陪伴。
-            </p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t grid-line mt-12">
-            <div class="p-8 border-r grid-line">
-                <span class="text-[10px] uppercase text-gray-400 tracking-widest">01 / Experience</span>
-                <h3 class="mt-4 font-serif text-lg text-gray-600 italic italic">"好的旅行，在於與誰同行。"</h3>
-            </div>
-            <div class="col-span-2 relative overflow-hidden h-[400px]">
-                <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1200" alt="Taiwan Scenery" class="object-cover w-full h-full hover:scale-105 transition duration-[2s]">
-            </div>
-        </div>
-    </section>
-
-    <!-- 服務項目 Services Section (Bento Grid) -->
-    <section id="services" class="py-24 px-8 bg-[#f5f5f5]">
-        <div class="mb-16">
-            <h2 class="text-3xl font-serif">核心服務 / Services</h2>
-            <div class="w-12 h-[1px] bg-black mt-4"></div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <!-- 伴遊租賃 -->
-            <div class="md:col-span-2 aspect-video bg-white p-12 flex flex-col justify-between border grid-line group hover:bg-black hover:text-white transition-all duration-500">
-                <h4 class="text-2xl font-serif uppercase tracking-wider">Companion<br>伴遊租賃</h4>
-                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100">
-                    專業且具備良好素養的陪同人員，為您的商務出差或私人休閒提供得體的社交支援與陪伴。
+    <section class="relative min-h-screen pt-32 flex flex-col hero-gradient">
+        <div class="px-6 md:px-12 flex-grow">
+            <div class="max-w-[1200px]">
+                <h1 class="text-5xl md:text-[100px] font-serif leading-[1.1] mb-8 animate-fade-in">
+                    探索臺灣。<br>
+                    <span class="md:ml-24 italic text-gray-400">以一種優雅的方式。</span>
+                </h1>
+                <p class="max-w-md text-sm leading-relaxed text-gray-500 tracking-wide">
+                    我們提供的不僅是伴遊，而是一場私密的、充滿美學的臺灣深度體驗。包含高端行程規劃與專業隨行攝影紀錄。
                 </p>
             </div>
-            <!-- 隨行攝影 -->
-            <div class="aspect-square bg-white p-8 flex flex-col justify-between border grid-line group hover:bg-black hover:text-white transition-all duration-500">
-                <h4 class="text-xl font-serif">隨行攝影</h4>
-                <span class="text-[10px] kerning uppercase">Visual Record</span>
+        </div>
+        
+        <!-- Hero 下方網格區塊 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 border-t grid-border">
+            <div class="p-8 border-r grid-border flex flex-col justify-between">
+                <span class="text-[10px] uppercase tracking-ultra text-gray-400">Est. 2024</span>
+                <p class="text-xs italic mt-4">“Travel is the only thing you buy that makes you richer.”</p>
             </div>
-            <!-- 行程規劃 -->
-            <div class="aspect-square bg-white p-8 flex flex-col justify-between border grid-line group hover:bg-black hover:text-white transition-all duration-500">
-                <h4 class="text-xl font-serif">行程規劃</h4>
-                <span class="text-[10px] kerning uppercase">Planning</span>
+            <div class="md:col-span-2 h-[400px] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1600&q=80" 
+                     alt="Taiwan" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105">
             </div>
         </div>
     </section>
 
-    <!-- 作品集展示 Gallery -->
-    <section id="gallery" class="py-24 border-t grid-line">
-        <div class="px-8 flex justify-between items-end mb-12">
-            <h2 class="text-3xl font-serif italic">The Visuals.</h2>
-            <p class="text-[10px] text-gray-400 uppercase tracking-[0.3em]">Capturing moments in Taiwan</p>
+    <!-- 服務項目 Services (Frenta Style Grid) -->
+    <section id="services" class="py-24 border-b grid-border">
+        <div class="px-6 mb-16">
+            <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-4">Core Services</h2>
+            <h3 class="text-4xl font-serif">我們的服務</h3>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 border-t grid-line">
-            <!-- 模擬作品圖片 -->
-            <div class="aspect-[3/4] border-r border-b grid-line overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=600" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-700">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t grid-border">
+            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
+                <h4 class="text-xl font-serif">私人伴旅<br>Companion</h4>
+                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">具備高度素養的專業同伴，適配商務與休閒場合。</p>
             </div>
-            <div class="aspect-[3/4] border-r border-b grid-line overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=600" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-700">
+            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
+                <h4 class="text-xl font-serif">隨行攝影<br>Photography</h4>
+                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">使用專業器材，為您的旅程留下如電影般的紀實影像。</p>
             </div>
-            <div class="aspect-[3/4] border-r border-b grid-line overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=600" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-700">
+            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
+                <h4 class="text-xl font-serif">行程規劃<br>Itinerary</h4>
+                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">避開大眾景點，挖掘只有在地人知道的私房祕境。</p>
             </div>
-            <div class="aspect-[3/4] border-b grid-line overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=600" class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition duration-700">
+            <div class="p-10 aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
+                <h4 class="text-xl font-serif">高端租賃<br>Concierge</h4>
+                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">代訂米其林餐廳、奢華旅宿與私人交通接送。</p>
             </div>
         </div>
     </section>
 
-    <!-- 頁尾 / 預約 Contact -->
-    <footer id="contact" class="bg-black text-white py-24 px-8">
+    <!-- 影像展示 Gallery -->
+    <section id="gallery" class="py-24 bg-[#1a1a1a] text-white overflow-hidden">
+        <div class="px-6 mb-12 flex justify-between items-end">
+            <div>
+                <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-500 mb-4">Portfolio</h2>
+                <h3 class="text-4xl font-serif italic">紀實。</h3>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
+            <!-- 運用 Unsplash 圖片模擬作品 -->
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1596402184320-417d7178b2cd?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+            <div class="aspect-[3/4] overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 / 聯繫方式 Footer -->
+    <footer id="contact" class="bg-white py-32 px-6 border-t grid-border">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-6xl font-serif mb-12">準備好開始您的專屬旅程嗎？</h2>
-            <a href="mailto:hello@example.com" class="inline-block border border-white px-12 py-4 text-xs uppercase tracking-[0.5em] hover:bg-white hover:text-black transition duration-500">
-                Contact Us
-            </a>
-            <div class="mt-24 grid grid-cols-1 md:grid-cols-3 text-[10px] text-gray-500 uppercase kerning">
-                <div>Based in Taipei, Taiwan</div>
-                <div>© 2024 THE COMPANION</div>
-                <div>GitHub Hosted Static Site</div>
+            <h2 class="text-5xl md:text-7xl font-serif mb-12 tracking-tight">開始您的旅程</h2>
+            <div class="flex flex-col items-center space-y-6">
+                <a href="mailto:contact@thecompanion.tw" class="text-xl border-b border-black pb-2 hover:text-gray-400 transition">contact@thecompanion.tw</a>
+                <p class="text-[10px] uppercase tracking-ultra text-gray-400 mt-12">Taipei / Taichung / Kaohsiung</p>
+            </div>
+            <div class="mt-32 text-[10px] text-gray-400 tracking-widest uppercase">
+                &copy; 2024 THE COMPANION TAIWAN. ALL RIGHTS RESERVED.
             </div>
         </div>
     </footer>
 
+    <!-- JavaScript 功能 -->
+    <script>
+        // 處理手機版選單開關
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden-menu');
+            document.body.classList.toggle('overflow-hidden'); // 防止滾動
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // 點擊連結後自動關閉選單
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // 簡單的滾動淡入效果 (Intersection Observer)
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'translate-y-10', 'opacity-0');
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
