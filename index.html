@@ -3,26 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>THE COMPANION | 臺灣私人伴旅・隨行攝影</title>
+    <title>THE COMPANION | 臺灣伴旅・如畫般的旅程</title>
     
-    <!-- 加載字體 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        'ghibli-sky': '#E0F2F7',
+                        'ghibli-green': '#2D5A27',
+                        'ghibli-paper': '#FCF8F1', // 暖色紙張感
+                        'ghibli-wood': '#5D4037',
+                    },
                     fontFamily: {
                         serif: ['"Noto Serif TC"', 'serif'],
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    letterSpacing: {
-                        'ultra': '.25em',
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
                     }
                 }
             }
@@ -30,172 +28,177 @@
     </script>
 
     <style type="text/css">
-        body { background-color: #ffffff; color: #1a1a1a; }
-        .grid-border { border: 0.5px solid rgba(0,0,0,0.1); }
-        .hero-gradient { background: linear-gradient(to bottom, #ffffff, #f9f9f9); }
-        /* 防止圖片未加載時的塌陷 */
-        .img-placeholder { background-color: #f0f0f0; }
-        /* 選單動畫 */
-        #mobile-menu { transition: all 0.3s ease-in-out; }
-        .hidden-menu { transform: translateY(-100%); opacity: 0; pointer-events: none; }
+        body { background-color: #FCF8F1; color: #4A4238; }
+        
+        /* 吉卜力畫風濾鏡：增加飽和度與柔光 */
+        .ghibli-filter {
+            filter: saturate(1.2) contrast(1.05) brightness(1.05);
+            border-radius: 2px;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .ghibli-filter:hover {
+            filter: saturate(1.4) brightness(1.1);
+        }
+
+        /* 手繪感邊框 */
+        .hand-drawn-border {
+            border: 1px solid rgba(93, 64, 55, 0.15);
+        }
+
+        /* 雲朵飄動動畫 */
+        @keyframes float {
+            0% { transform: translateX(0px); }
+            50% { transform: translateX(15px); }
+            100% { transform: translateX(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        /* 文字陰影增強可讀性 */
+        .soft-shadow { text-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+        /* 自定義捲軸 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #FCF8F1; }
+        ::-webkit-scrollbar-thumb { background: #D2B48C; border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <!-- 導航列 Navigation -->
-    <nav class="fixed w-full z-[100] bg-white/90 backdrop-blur-md border-b grid-border">
-        <div class="max-w-[1440px] mx-auto px-6 py-5 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-tighter uppercase">The Companion</div>
-            
-            <!-- 桌面版選單 -->
-            <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-ultra font-semibold">
-                <a href="#services" class="hover:text-gray-400 transition">Services</a>
-                <a href="#gallery" class="hover:text-gray-400 transition">Gallery</a>
-                <a href="#about" class="hover:text-gray-400 transition">About</a>
-                <a href="#contact" class="hover:text-gray-400 transition">Booking</a>
+    <!-- 導航列 -->
+    <nav class="fixed w-full z-[100] bg-[#FCF8F1]/90 backdrop-blur-sm border-b hand-drawn-border">
+        <div class="max-w-[1440px] mx-auto px-8 py-5 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-ghibli-green rounded-full opacity-80 animate-pulse"></div>
+                <span class="text-xl font-bold tracking-widest uppercase font-serif text-ghibli-wood">The Companion</span>
             </div>
-
-            <!-- 手機版漢堡按鈕 -->
-            <button id="menu-btn" class="md:hidden flex flex-col space-y-1.5">
-                <span class="w-6 h-px bg-black"></span>
-                <span class="w-6 h-px bg-black"></span>
-            </button>
+            
+            <div class="hidden md:flex space-x-12 text-xs font-bold tracking-[0.3em] text-ghibli-wood/70">
+                <a href="#about" class="hover:text-ghibli-green transition">關於</a>
+                <a href="#services" class="hover:text-ghibli-green transition">服務</a>
+                <a href="#gallery" class="hover:text-ghibli-green transition">映象</a>
+                <a href="#contact" class="hover:text-ghibli-green transition">聯絡</a>
+            </div>
         </div>
     </nav>
 
-    <!-- 手機版全螢幕選單 -->
-    <div id="mobile-menu" class="fixed inset-0 bg-white z-[90] flex flex-col items-center justify-center space-y-8 hidden-menu md:hidden">
-        <a href="#services" class="mobile-link text-2xl font-serif">核心服務</a>
-        <a href="#gallery" class="mobile-link text-2xl font-serif">影像紀實</a>
-        <a href="#about" class="mobile-link text-2xl font-serif">關於我們</a>
-        <a href="#contact" class="mobile-link text-2xl font-serif">預約行程</a>
-    </div>
+    <!-- 主視覺區 -->
+    <section class="relative min-h-screen pt-40 px-8 overflow-hidden">
+        <!-- 裝飾用「雲朵」意象 -->
+        <div class="absolute top-40 right-[10%] w-64 h-20 bg-white/40 blur-3xl rounded-full animate-float"></div>
 
-    <!-- 主視覺 Hero Section -->
-    <section class="relative min-h-screen pt-32 flex flex-col hero-gradient">
-        <div class="px-6 md:px-12 flex-grow">
-            <div class="max-w-[1200px]">
-                <h1 class="text-5xl md:text-[100px] font-serif leading-[1.1] mb-8 animate-fade-in">
-                    探索臺灣。<br>
-                    <span class="md:ml-24 italic text-gray-400">以一種優雅的方式。</span>
-                </h1>
-                <p class="max-w-md text-sm leading-relaxed text-gray-500 tracking-wide">
-                    我們提供的不僅是伴遊，而是一場私密的、充滿美學的臺灣深度體驗。包含高端行程規劃與專業隨行攝影紀錄。
-                </p>
-            </div>
-        </div>
-        
-        <!-- Hero 下方網格區塊 -->
-        <div class="grid grid-cols-1 md:grid-cols-3 border-t grid-border">
-            <div class="p-8 border-r grid-border flex flex-col justify-between">
-                <span class="text-[10px] uppercase tracking-ultra text-gray-400">Est. 2024</span>
-                <p class="text-xs italic mt-4">“Travel is the only thing you buy that makes you richer.”</p>
-            </div>
-            <div class="md:col-span-2 h-[400px] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?auto=format&fit=crop&w=1600&q=80" 
-                     alt="Taiwan" class="w-full h-full object-cover transition-transform duration-1000 hover:scale-105">
+        <div class="relative z-10 max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="text-5xl md:text-7xl font-serif leading-tight text-ghibli-wood mb-8 soft-shadow">
+                        在臺灣的翠綠中，<br>
+                        <span class="italic text-ghibli-green">遇見另一個自己。</span>
+                    </h1>
+                    <p class="max-w-md text-sm leading-loose text-ghibli-wood/80 tracking-widest mb-10">
+                        我們像風一樣隨行，紀錄您在福爾摩沙每一刻如同動畫般燦爛的瞬間。專業隨行攝影與深度伴旅服務。
+                    </p>
+                    <a href="#contact" class="inline-block border border-ghibli-wood px-10 py-4 text-xs uppercase tracking-widest hover:bg-ghibli-wood hover:text-white transition duration-500">
+                        開啟旅程
+                    </a>
+                </div>
+                <!-- 像吉卜力背景的臺灣意象圖 (阿里山/九份感) -->
+                <div class="relative group">
+                    <div class="absolute -inset-4 bg-ghibli-green/5 rounded-full blur-2xl group-hover:bg-ghibli-green/10 transition"></div>
+                    <img src="https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?auto=format&fit=crop&w=1000&q=80" 
+                         alt="Ghibli-style Nature" class="relative ghibli-filter rounded-lg shadow-2xl">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 服務項目 Services (Frenta Style Grid) -->
-    <section id="services" class="py-24 border-b grid-border">
-        <div class="px-6 mb-16">
-            <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-400 mb-4">Core Services</h2>
-            <h3 class="text-4xl font-serif">我們的服務</h3>
-        </div>
+    <!-- 服務項目區 (Bento Grid) -->
+    <section id="services" class="py-32 px-8 bg-white/50 border-y hand-drawn-border">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="mb-20 text-center">
+                <span class="text-[10px] uppercase tracking-[0.5em] text-ghibli-green font-bold">What We Offer</span>
+                <h2 class="text-4xl font-serif mt-4 text-ghibli-wood">溫暖的服務</h2>
+            </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-t grid-border">
-            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
-                <h4 class="text-xl font-serif">私人伴旅<br>Companion</h4>
-                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">具備高度素養的專業同伴，適配商務與休閒場合。</p>
-            </div>
-            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
-                <h4 class="text-xl font-serif">隨行攝影<br>Photography</h4>
-                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">使用專業器材，為您的旅程留下如電影般的紀實影像。</p>
-            </div>
-            <div class="p-10 border-r grid-border aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
-                <h4 class="text-xl font-serif">行程規劃<br>Itinerary</h4>
-                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">避開大眾景點，挖掘只有在地人知道的私房祕境。</p>
-            </div>
-            <div class="p-10 aspect-square flex flex-col justify-between hover:bg-black hover:text-white transition-colors duration-500 group">
-                <h4 class="text-xl font-serif">高端租賃<br>Concierge</h4>
-                <p class="text-xs leading-relaxed opacity-60 group-hover:opacity-100 italic">代訂米其林餐廳、奢華旅宿與私人交通接送。</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 攝影 -->
+                <div class="p-12 bg-[#FCF8F1] border hand-drawn-border hover:shadow-xl transition-all duration-500 group">
+                    <div class="w-12 h-12 mb-8 border border-ghibli-green flex items-center justify-center group-hover:bg-ghibli-green transition">
+                        <span class="text-ghibli-green group-hover:text-white">📷</span>
+                    </div>
+                    <h4 class="text-xl font-serif mb-4">隨行攝影紀錄</h4>
+                    <p class="text-xs leading-relaxed text-ghibli-wood/70">捕捉陽光穿透樹葉的「木漏れ日」，將您的旅行定格成動畫分鏡般的藝術品。</p>
+                </div>
+
+                <!-- 規劃 -->
+                <div class="p-12 bg-[#FCF8F1] border hand-drawn-border hover:shadow-xl transition-all duration-500 group">
+                    <div class="w-12 h-12 mb-8 border border-ghibli-green flex items-center justify-center group-hover:bg-ghibli-green transition">
+                        <span class="text-ghibli-green group-hover:text-white">🗺️</span>
+                    </div>
+                    <h4 class="text-xl font-serif mb-4">秘密行程規劃</h4>
+                    <p class="text-xs leading-relaxed text-ghibli-wood/70">帶您走進連在地人都驚嘆的私房景點，感受臺灣最純粹的山海與人情。</p>
+                </div>
+
+                <!-- 陪伴 -->
+                <div class="p-12 bg-[#FCF8F1] border hand-drawn-border hover:shadow-xl transition-all duration-500 group">
+                    <div class="w-12 h-12 mb-8 border border-ghibli-green flex items-center justify-center group-hover:bg-ghibli-green transition">
+                        <span class="text-ghibli-green group-hover:text-white">🌿</span>
+                    </div>
+                    <h4 class="text-xl font-serif mb-4">暖心隨行陪伴</h4>
+                    <p class="text-xs leading-relaxed text-ghibli-wood/70">不只是嚮導，是傾聽者，也是分享美景的夥伴。為您的獨旅增添一份溫馨。</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 影像展示 Gallery -->
-    <section id="gallery" class="py-24 bg-[#1a1a1a] text-white overflow-hidden">
-        <div class="px-6 mb-12 flex justify-between items-end">
-            <div>
-                <h2 class="text-[10px] uppercase tracking-[0.5em] text-gray-500 mb-4">Portfolio</h2>
-                <h3 class="text-4xl font-serif italic">紀實。</h3>
+    <!-- 影像藝廊 -->
+    <section id="gallery" class="py-32 bg-[#FCF8F1]">
+        <div class="px-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-[1400px] mx-auto">
+            <div class="space-y-4">
+                <img src="https://images.unsplash.com/photo-1552055663-17631df2f628?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
+                <img src="https://images.unsplash.com/photo-1542359649-31e03ad4d92c?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
             </div>
-        </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-0">
-            <!-- 運用 Unsplash 圖片模擬作品 -->
-            <div class="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            <div class="pt-12 space-y-4">
+                <img src="https://images.unsplash.com/photo-1505948468432-ad53e39f993d?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
+                <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
             </div>
-            <div class="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1596402184320-417d7178b2cd?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            <div class="space-y-4">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
+                <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
             </div>
-            <div class="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
-            </div>
-            <div class="aspect-[3/4] overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=800" class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-1000">
+            <div class="pt-12 space-y-4">
+                <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600" class="ghibli-filter shadow-lg">
             </div>
         </div>
     </section>
 
-    <!-- 頁尾 / 聯繫方式 Footer -->
-    <footer id="contact" class="bg-white py-32 px-6 border-t grid-border">
+    <!-- 頁尾 -->
+    <footer id="contact" class="bg-ghibli-green text-[#FCF8F1] py-32 px-8">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-5xl md:text-7xl font-serif mb-12 tracking-tight">開始您的旅程</h2>
-            <div class="flex flex-col items-center space-y-6">
-                <a href="mailto:contact@thecompanion.tw" class="text-xl border-b border-black pb-2 hover:text-gray-400 transition">contact@thecompanion.tw</a>
-                <p class="text-[10px] uppercase tracking-ultra text-gray-400 mt-12">Taipei / Taichung / Kaohsiung</p>
-            </div>
-            <div class="mt-32 text-[10px] text-gray-400 tracking-widest uppercase">
-                &copy; 2024 THE COMPANION TAIWAN. ALL RIGHTS RESERVED.
+            <h2 class="text-4xl md:text-6xl font-serif mb-8 soft-shadow italic">一起出發吧！</h2>
+            <p class="mb-12 text-sm tracking-[0.2em] opacity-80">讓每一趟旅行都成為值得珍藏的畫卷。</p>
+            <div class="space-y-4">
+                <a href="mailto:hello@thecompanion.tw" class="block text-2xl font-light underline decoration-1 underline-offset-8">hello@thecompanion.tw</a>
+                <p class="text-[10px] mt-24 opacity-50 uppercase tracking-[0.5em]">Made with Love for Taiwan 여행</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript 功能 -->
     <script>
-        // 處理手機版選單開關
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('hidden-menu');
-            document.body.classList.toggle('overflow-hidden'); // 防止滾動
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-
-        // 點擊連結後自動關閉選單
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', toggleMenu);
-        });
-
-        // 簡單的滾動淡入效果 (Intersection Observer)
-        const observerOptions = { threshold: 0.1 };
+        // 基本淡入效果
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100');
-                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
         document.querySelectorAll('section').forEach(section => {
-            section.classList.add('transition-all', 'duration-1000', 'translate-y-10', 'opacity-0');
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 1.2s ease-out';
             observer.observe(section);
         });
     </script>
