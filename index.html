@@ -3,232 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>陪你走一段路｜Walk With You</title>
-
+<title>陪你走一段路｜旅行服務</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#E3E8EB;
-  --soft:#F3EFDD;
-  --card:#E3D5C9;
+  --card:#ffffff;
   --accent:#A3D5DC;
   --text:#2A2A2A;
+  --btn:#FFA500;
 }
-
-*{box-sizing:border-box;margin:0;padding:0}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
   font-family:'Noto Sans TC',sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.9;
-  font-size:16px;
+  line-height:1.7;
 }
-
 a{text-decoration:none;color:inherit}
-
 header{
-  padding:90px 20px 70px;
+  text-align:center;
+  padding:80px 20px;
   background:
-    linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.35)),
+    linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.25)),
     url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
   background-size:cover;
   background-position:center;
   color:#fff;
-  text-align:center;
 }
-
-.logo{
-  font-size:1.2rem;
-  letter-spacing:1px;
-  opacity:.9;
-  margin-bottom:24px;
-}
-
-header h1{
-  font-size:2.1rem;
-  margin-bottom:20px;
-}
-
-header p{
-  font-size:1.05rem;
-  opacity:.95;
-  margin-bottom:36px;
-}
-
-.btn{
-  background:var(--accent);
-  padding:14px 30px;
-  border-radius:40px;
-  display:inline-block;
+header h1{font-size:2.4rem;margin-bottom:12px}
+header p{font-size:1.1rem;margin-bottom:24px}
+.btn-main{
+  background:var(--btn);
+  padding:14px 32px;
+  border-radius:36px;
   font-weight:500;
 }
+/* Section */
+section{padding:60px 20px;max-width:900px;margin:auto}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:1.8rem;margin-bottom:8px}
 
-section{
-  padding:70px 20px;
-  max-width:720px;
-  margin:auto;
+/* Destinations */
+.destinations{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:26px;
 }
-
-.title{
-  margin-bottom:36px;
-}
-
-.title h2{
-  font-size:1.6rem;
-  margin-bottom:10px;
-}
-
-.soft-box{
-  background:var(--soft);
-  border-radius:26px;
-  padding:36px 28px;
-}
-
-.card{
+.dest-card{
   background:var(--card);
   border-radius:22px;
-  padding:28px;
-  margin-bottom:20px;
+  overflow:hidden;
+  box-shadow:0 8px 22px rgba(0,0,0,.08);
 }
+.dest-card img{
+  width:100%;height:180px;object-fit:cover
+}
+.dest-card .info{padding:18px}
+.dest-card h3{margin-bottom:6px}
 
-/* Story */
-.story{
-  background:#fff;
-  border-radius:26px;
-  padding:36px 28px;
-  margin-bottom:26px;
+/* Features */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:24px;
+  text-align:center;
+}
+.feature{
+  background:var(--card);
+  border-radius:20px;
+  padding:18px;
+  box-shadow:0 6px 18px rgba(0,0,0,.07);
 }
 
 /* Gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
+}
 .gallery img{
-  width:100%;
-  border-radius:22px;
-  margin-bottom:18px;
+  width:100%;border-radius:18px
 }
 
-/* Desktop */
-@media(min-width:900px){
-  header h1{font-size:2.6rem}
-  section{max-width:900px}
-}
+/* CTA */
+.cta{text-align:center;margin-top:40px}
 </style>
 </head>
 
 <body>
 
+<!-- Hero -->
 <header>
-<div class="logo">Walk With You</div>
-<h1>不是帶你旅行，<br>而是陪你走過。</h1>
-<p>「有些旅程，需要的不是目的地，<br>而是一個願意陪你慢慢走的人。」</p>
-<a class="btn" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE 開始對話</a>
+<h1>陪你走一段路｜安心旅行夥伴</h1>
+<p>有些風景值得慢慢走進，不急著結束。</p>
+<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE 開始對話</a>
 </header>
 
+<!-- Destinations -->
 <section>
-<div class="title">
-<h2>我們的故事</h2>
+<div class="section-title">
+<h2>精彩目的地推薦</h2>
+<p>你不只是看風景，你是在旅行</p>
 </div>
-
-<div class="soft-box">
-<p>
-這個服務，並不是從「旅遊」開始的。  
-而是從很多人的一句話開始：
-</p>
-<br>
-<p>
-「我想去看看世界，  
-但一個人，有點孤單。」
-</p>
-<br>
-<p>
-於是我們決定，用「朋友陪伴」的方式，  
-陪你走進陌生的城市、風景與日常。
-</p>
-<p>
-不催促、不安排滿滿行程，  
-只陪你，用自己的步調旅行。
-</p>
-</div>
-</section>
-
-<section>
-<div class="title">
-<h2>真實旅程故事</h2>
-</div>
-
-<div class="story">
-<p><strong>Yuki｜日本｜第一次來台灣</strong></p>
-<br>
-<p>
-「原本很擔心語言問題，  
-但一路上像是和老朋友聊天。
-</p>
-<p>
-我們坐在海邊看夕陽，  
-那一刻，我突然覺得，  
-這趟旅行會記得一輩子。」
-</p>
-</div>
-
-<div class="story">
-<p><strong>Alex｜新加坡｜一個人的假期</strong></p>
-<br>
-<p>
-「沒有被推著走景點，  
-只是慢慢走在城市裡。
-</p>
-<p>
-原來旅行可以這麼安靜，  
-卻這麼真實。」
-</p>
-</div>
-</section>
-
-<section>
-<div class="title">
-<h2>你將經歷的旅程</h2>
-</div>
-
-<div class="card">
-<p>🌿 不趕時間的城市散步</p>
-</div>
-<div class="card">
-<p>🌊 海邊、森林、街道的陪伴</p>
-</div>
-<div class="card">
-<p>☕ 像朋友一樣聊天、分享</p>
-</div>
-<div class="card">
-<p>🚶‍♀️ 走到累了就停，不需要理由</p>
-</div>
-</section>
-
-<section>
-<div class="title">
-<h2>旅途風景</h2>
-</div>
-
-<div class="gallery">
-<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+<div class="destinations">
+<div class="dest-card">
 <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
+<div class="info"><h3>峇里島海岸線</h3></div>
+</div>
+<div class="dest-card">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+<div class="info"><h3>森林步道探索</h3></div>
+</div>
+<div class="dest-card">
 <img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
+<div class="info"><h3>都市街景漫遊</h3></div>
+</div>
 </div>
 </section>
 
-<section style="text-align:center">
-<p style="font-size:1.2rem;margin-bottom:18px">
-你的旅程，從一段對話開始
-</p>
-<a class="btn" href="https://line.me/R/ti/p/@095wdniw" target="_blank">
-加入 LINE 與我們聊聊
-</a>
+<!-- Features -->
+<section style="background:var(--bg)">
+<div class="section-title">
+<h2>我們的服務特色</h2>
+</div>
+<div class="features">
+<div class="feature"><p>🌿 友人式陪伴旅遊</p></div>
+<div class="feature"><p>📸 旅程記憶捕捉</p></div>
+<div class="feature"><p>🚗 私人接送安排</p></div>
+<div class="feature"><p>🗺️ 客製化行程設計</p></div>
+</div>
 </section>
 
-<footer style="text-align:center;padding:50px 20px;opacity:.7">
-<p>Walk With You｜陪你走一段路</p>
-</footer>
+<!-- Gallery -->
+<section>
+<div class="section-title">
+<h2>旅遊風景圖像集</h2>
+<p>先看看，再踏上旅程</p>
+</div>
+<div class="gallery">
+<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<img src="https://images.unsplash.com/photo-1469854523086-a3bbc9d36736">
+<img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429">
+</div>
+</section>
+
+<!-- Call to Action -->
+<section class="cta">
+<p style="font-size:1.1rem;margin-bottom:12px">旅途從對話開始</p>
+<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE 開始旅程</a>
+</section>
 
 </body>
 </html>
