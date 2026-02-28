@@ -3,44 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>陪你走一段路｜安心旅行夥伴</title>
+<title>陪你走一段路｜台灣高端陪伴式旅遊</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#FFF8F2;
-  --card:#ffffff;
-  --accent:#FF9F5A;
-  --accent-soft:#FFD9B8;
-  --text:#3D2C25;
-  --shadow:0 15px 35px rgba(0,0,0,.08);
+  --bg:#F6F1EB;
+  --dark:#2C2522;
+  --gold:#C8A46B;
+  --card:#FFFFFF;
+  --text:#3A322F;
+  --shadow:0 20px 40px rgba(0,0,0,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Noto Sans TC',sans-serif;
-  background:linear-gradient(180deg,#FFF8F2,#FFEDE2);
+  background:var(--bg);
   color:var(--text);
   line-height:1.8;
 }
 
-section{padding:70px 20px;max-width:1100px;margin:auto}
-
-/* ---------- HERO SLIDER ---------- */
+/* HERO */
 .hero{
-  position:relative;
-  height:85vh;
-  overflow:hidden;
-}
-
-.slide{
-  position:absolute;
-  width:100%;
-  height:100%;
-  opacity:0;
-  transition:opacity 1s ease;
+  height:90vh;
+  background:
+  linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),
+  url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
   background-size:cover;
   background-position:center;
   display:flex;
@@ -48,103 +39,137 @@ section{padding:70px 20px;max-width:1100px;margin:auto}
   justify-content:center;
   text-align:center;
   padding:20px;
+  color:white;
 }
 
-.slide.active{opacity:1}
-
-.overlay{
-  background:rgba(255,159,90,.45);
-  padding:40px 28px;
-  border-radius:28px;
-  color:#fff;
-  max-width:500px;
+.hero-content{
+  max-width:520px;
 }
 
-.overlay h1{font-size:1.9rem;margin-bottom:12px}
-.overlay p{margin-bottom:22px}
+.hero h1{
+  font-size:2.2rem;
+  margin-bottom:18px;
+}
 
-/* Floating Button */
-.btn-main{
+.hero p{
+  opacity:.9;
+  margin-bottom:28px;
+}
+
+.btn-gold{
   display:inline-block;
-  background:var(--accent);
-  padding:14px 34px;
+  background:var(--gold);
+  padding:14px 36px;
   border-radius:40px;
   font-weight:600;
-  color:#fff;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-  animation:float 3s ease-in-out infinite;
+  color:white;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
   transition:.3s;
 }
 
-.btn-main:hover{
+.btn-gold:hover{
   transform:translateY(-4px);
 }
 
-@keyframes float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-6px)}
+/* SECTION */
+section{
+  padding:80px 22px;
+  max-width:1100px;
+  margin:auto;
 }
 
-/* ---------- TITLE ---------- */
-.section-title{text-align:center;margin-bottom:40px}
-.section-title h2{font-size:1.6rem;margin-bottom:8px}
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+}
 
-/* ---------- PRICE ---------- */
+.section-title h2{
+  font-size:1.8rem;
+  margin-bottom:10px;
+}
+
+/* BRAND STORY */
+.story{
+  background:var(--card);
+  padding:40px;
+  border-radius:30px;
+  box-shadow:var(--shadow);
+}
+
+/* PRICING */
 .pricing{
   display:grid;
-  gap:25px;
+  gap:28px;
 }
 
 .plan{
   background:var(--card);
-  padding:30px;
-  border-radius:25px;
+  padding:40px;
+  border-radius:30px;
   box-shadow:var(--shadow);
   text-align:center;
 }
 
 .plan.popular{
-  background:var(--accent-soft);
-  transform:scale(1.05);
+  border:2px solid var(--gold);
 }
 
 .price{
-  font-size:1.4rem;
+  font-size:1.5rem;
   font-weight:700;
-  margin:12px 0;
+  margin:15px 0;
+  color:var(--gold);
 }
 
-/* ---------- TESTIMONIAL ---------- */
+/* TESTIMONIAL */
 .testimonials{
   display:flex;
   overflow-x:auto;
-  gap:20px;
-  scroll-snap-type:x mandatory;
+  gap:24px;
 }
 
 .testimonial{
-  min-width:260px;
+  min-width:280px;
   background:var(--card);
-  padding:22px;
-  border-radius:22px;
+  padding:28px;
+  border-radius:26px;
   box-shadow:var(--shadow);
-  scroll-snap-align:start;
 }
 
-.testimonial p{
-  font-size:.95rem;
-  margin-bottom:10px;
+/* GUARANTEE */
+.guarantee{
+  background:var(--dark);
+  color:white;
+  padding:50px 30px;
+  border-radius:30px;
 }
 
-.name{
+/* FAQ */
+.faq-item{
+  margin-bottom:20px;
+}
+
+.faq-item h4{
+  margin-bottom:6px;
+  color:var(--gold);
+}
+
+/* FLOAT BUTTON */
+.float-line{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:var(--gold);
+  padding:14px 20px;
+  border-radius:40px;
+  color:white;
   font-weight:600;
-  font-size:.9rem;
-  opacity:.7;
+  box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 
-/* ---------- DESKTOP ---------- */
+/* DESKTOP */
 @media(min-width:768px){
-  .overlay h1{font-size:2.6rem}
+  .hero h1{font-size:2.8rem}
   .pricing{grid-template-columns:repeat(3,1fr)}
 }
 </style>
@@ -154,30 +179,25 @@ section{padding:70px 20px;max-width:1100px;margin:auto}
 
 <!-- HERO -->
 <div class="hero">
-  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')">
-    <div class="overlay">
-      <h1>陪你走一段路</h1>
-      <p>不是帶路，是陪伴</p>
-      <a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE</a>
-    </div>
-  </div>
-
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e')">
-    <div class="overlay">
-      <h1>旅程不急</h1>
-      <p>慢慢走，慢慢看</p>
-    </div>
-  </div>
-
-  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')">
-    <div class="overlay">
-      <h1>屬於你的旅行</h1>
-      <p>為你設計的片刻</p>
-    </div>
+  <div class="hero-content">
+    <h1>台灣高端陪伴式旅遊體驗</h1>
+    <p>不是導遊，而是專屬旅程陪伴者。</p>
+    <a class="btn-gold" href="https://line.me/R/ti/p/@095wdniw" target="_blank">預約專屬旅程</a>
   </div>
 </div>
 
-<!-- PRICE -->
+<!-- BRAND STORY -->
+<section>
+<div class="section-title">
+<h2>品牌理念</h2>
+</div>
+<div class="story">
+我們提供的是安心、專業、界線清楚的陪伴式旅遊服務。  
+讓獨自來台灣的旅人，也能有一段溫柔的記憶。
+</div>
+</section>
+
+<!-- PRICING -->
 <section>
 <div class="section-title">
 <h2>服務方案</h2>
@@ -186,20 +206,20 @@ section{padding:70px 20px;max-width:1100px;margin:auto}
 <div class="pricing">
 <div class="plan">
 <h3>半日陪伴</h3>
-<div class="price">NT$3,200</div>
-<p>城市慢步、咖啡聊天、景點陪伴</p>
+<div class="price">NT$3,500</div>
+<p>4小時城市陪伴與行程安排</p>
 </div>
 
 <div class="plan popular">
-<h3>一日旅程（主推）</h3>
-<div class="price">NT$5,800</div>
-<p>完整陪伴 + 行程規劃 + 攝影紀錄</p>
+<h3>一日專屬旅程</h3>
+<div class="price">NT$6,800</div>
+<p>8小時完整陪伴 + 攝影紀錄 + 客製規劃</p>
 </div>
 
 <div class="plan">
-<h3>深度訂製行程</h3>
-<div class="price">NT$8,800 起</div>
-<p>專屬設計、接送安排、彈性規劃</p>
+<h3>深度訂製</h3>
+<div class="price">NT$9,800 起</div>
+<p>接送安排 + 客製多日行程</p>
 </div>
 </div>
 </section>
@@ -207,42 +227,51 @@ section{padding:70px 20px;max-width:1100px;margin:auto}
 <!-- TESTIMONIAL -->
 <section>
 <div class="section-title">
-<h2>旅人故事</h2>
+<h2>旅人回饋</h2>
 </div>
-
 <div class="testimonials">
 <div class="testimonial">
-<p>「原本只是想找人帶路，結果像認識了一位朋友。」</p>
-<div class="name">— Kenji｜日本</div>
+「非常專業與安心，行程安排很自然。」
+<br><br>— 台北 商務旅客
 </div>
-
 <div class="testimonial">
-<p>「旅程很自然，不尷尬，也沒有壓力。」</p>
-<div class="name">— Michael｜新加坡</div>
-</div>
-
-<div class="testimonial">
-<p>「謝謝那天的陪伴，讓台灣變得溫柔。」</p>
-<div class="name">— Yumi｜東京</div>
+「不像商業行程，比較像朋友。」
+<br><br>— 台中 旅遊客
 </div>
 </div>
 </section>
 
-<!-- CTA -->
-<section style="text-align:center;padding-bottom:100px">
-<p style="margin-bottom:16px;font-size:1.1rem">讓旅程從對話開始</p>
-<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">立即預約</a>
+<!-- GUARANTEE -->
+<section>
+<div class="guarantee">
+<h2 style="margin-bottom:20px">安心保障</h2>
+✔ 全程公開行程安排<br>
+✔ 明確服務界線<br>
+✔ 不涉及任何違法或灰色內容<br>
+✔ 可事前溝通確認
+</div>
 </section>
 
-<script>
-let slides=document.querySelectorAll('.slide');
-let index=0;
-setInterval(()=>{
-  slides[index].classList.remove('active');
-  index=(index+1)%slides.length;
-  slides[index].classList.add('active');
-},5000);
-</script>
+<!-- FAQ -->
+<section>
+<div class="section-title">
+<h2>常見問題</h2>
+</div>
+
+<div class="faq-item">
+<h4>Q：是否為導遊服務？</h4>
+A：我們屬於陪伴式旅遊體驗，非持證導遊解說。
+</div>
+
+<div class="faq-item">
+<h4>Q：是否安全？</h4>
+A：所有服務皆以合法、安全、尊重為原則。
+</div>
+</section>
+
+<a class="float-line" href="https://line.me/R/ti/p/@095wdniw" target="_blank">
+LINE 諮詢
+</a>
 
 </body>
 </html>
