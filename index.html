@@ -9,155 +9,143 @@
 
 <style>
 :root{
-  --bg:#FFF8F1;
-  --card:#FFFFFF;
-  --accent:#FFB26B;
-  --accent-soft:#FFD8A8;
-  --text:#3A2E2A;
-  --shadow:0 12px 30px rgba(0,0,0,.08);
+  --bg:#FFF8F2;
+  --card:#ffffff;
+  --accent:#FF9F5A;
+  --accent-soft:#FFD9B8;
+  --text:#3D2C25;
+  --shadow:0 15px 35px rgba(0,0,0,.08);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Noto Sans TC',sans-serif;
-  background:linear-gradient(180deg,#FFF8F1,#FFEDE1);
+  background:linear-gradient(180deg,#FFF8F2,#FFEDE2);
   color:var(--text);
   line-height:1.8;
 }
 
-/* ---------- HERO ---------- */
-header{
-  padding:100px 22px 80px;
-  text-align:center;
-  background:
-    linear-gradient(rgba(255,178,107,.55),rgba(255,178,107,.35)),
-    url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+section{padding:70px 20px;max-width:1100px;margin:auto}
+
+/* ---------- HERO SLIDER ---------- */
+.hero{
+  position:relative;
+  height:85vh;
+  overflow:hidden;
+}
+
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  opacity:0;
+  transition:opacity 1s ease;
   background-size:cover;
   background-position:center;
-  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
 }
 
-header h1{
-  font-size:2rem;
-  margin-bottom:14px;
-  font-weight:700;
+.slide.active{opacity:1}
+
+.overlay{
+  background:rgba(255,159,90,.45);
+  padding:40px 28px;
+  border-radius:28px;
+  color:#fff;
+  max-width:500px;
 }
 
-header p{
-  font-size:1rem;
-  margin-bottom:28px;
-}
+.overlay h1{font-size:1.9rem;margin-bottom:12px}
+.overlay p{margin-bottom:22px}
 
+/* Floating Button */
 .btn-main{
   display:inline-block;
   background:var(--accent);
   padding:14px 34px;
   border-radius:40px;
   font-weight:600;
-  box-shadow:0 10px 25px rgba(0,0,0,.15);
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  animation:float 3s ease-in-out infinite;
   transition:.3s;
 }
 
 .btn-main:hover{
-  transform:translateY(-3px);
-  box-shadow:0 14px 30px rgba(0,0,0,.2);
+  transform:translateY(-4px);
 }
 
-/* ---------- SECTION ---------- */
-section{
-  padding:70px 20px;
-  max-width:960px;
-  margin:auto;
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-6px)}
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:50px;
-}
+/* ---------- TITLE ---------- */
+.section-title{text-align:center;margin-bottom:40px}
+.section-title h2{font-size:1.6rem;margin-bottom:8px}
 
-.section-title h2{
-  font-size:1.6rem;
-  margin-bottom:8px;
-}
-
-/* ---------- DESTINATIONS ---------- */
-.destinations{
+/* ---------- PRICE ---------- */
+.pricing{
   display:grid;
-  gap:26px;
+  gap:25px;
 }
 
-.dest-card{
+.plan{
   background:var(--card);
-  border-radius:24px;
-  overflow:hidden;
+  padding:30px;
+  border-radius:25px;
   box-shadow:var(--shadow);
-  transition:.3s;
+  text-align:center;
 }
 
-.dest-card:hover{
-  transform:translateY(-5px);
+.plan.popular{
+  background:var(--accent-soft);
+  transform:scale(1.05);
 }
 
-.dest-card img{
-  width:100%;
-  height:200px;
-  object-fit:cover;
-  filter:brightness(.92) saturate(.9);
+.price{
+  font-size:1.4rem;
+  font-weight:700;
+  margin:12px 0;
 }
 
-.dest-card .info{
-  padding:20px;
+/* ---------- TESTIMONIAL ---------- */
+.testimonials{
+  display:flex;
+  overflow-x:auto;
+  gap:20px;
+  scroll-snap-type:x mandatory;
 }
 
-.dest-card h3{
-  font-size:1.1rem;
-}
-
-/* ---------- FEATURES ---------- */
-.features{
-  display:grid;
-  gap:22px;
-}
-
-.feature{
+.testimonial{
+  min-width:260px;
   background:var(--card);
-  padding:24px;
+  padding:22px;
   border-radius:22px;
-  text-align:center;
   box-shadow:var(--shadow);
+  scroll-snap-align:start;
 }
 
-/* ---------- GALLERY ---------- */
-.gallery{
-  display:grid;
-  gap:18px;
+.testimonial p{
+  font-size:.95rem;
+  margin-bottom:10px;
 }
 
-.gallery img{
-  width:100%;
-  border-radius:20px;
-  box-shadow:var(--shadow);
-  filter:brightness(.95) saturate(.9);
-}
-
-/* ---------- CTA ---------- */
-.cta{
-  text-align:center;
-  padding-bottom:100px;
-}
-
-.cta p{
-  margin-bottom:16px;
-  font-size:1.1rem;
+.name{
+  font-weight:600;
+  font-size:.9rem;
+  opacity:.7;
 }
 
 /* ---------- DESKTOP ---------- */
 @media(min-width:768px){
-  header h1{font-size:2.5rem}
-  .destinations{grid-template-columns:repeat(3,1fr)}
-  .features{grid-template-columns:repeat(4,1fr)}
-  .gallery{grid-template-columns:repeat(4,1fr)}
+  .overlay h1{font-size:2.6rem}
+  .pricing{grid-template-columns:repeat(3,1fr)}
 }
 </style>
 </head>
@@ -165,71 +153,96 @@ section{
 <body>
 
 <!-- HERO -->
-<header>
-<h1>陪你走一段路</h1>
-<p>有些風景值得慢慢走進，不急著結束。</p>
-<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE 開始對話</a>
-</header>
+<div class="hero">
+  <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e')">
+    <div class="overlay">
+      <h1>陪你走一段路</h1>
+      <p>不是帶路，是陪伴</p>
+      <a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE</a>
+    </div>
+  </div>
 
-<!-- DESTINATIONS -->
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e')">
+    <div class="overlay">
+      <h1>旅程不急</h1>
+      <p>慢慢走，慢慢看</p>
+    </div>
+  </div>
+
+  <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')">
+    <div class="overlay">
+      <h1>屬於你的旅行</h1>
+      <p>為你設計的片刻</p>
+    </div>
+  </div>
+</div>
+
+<!-- PRICE -->
 <section>
 <div class="section-title">
-<h2>推薦旅程風景</h2>
-<p>讓旅程成為一段溫柔的記憶</p>
+<h2>服務方案</h2>
 </div>
 
-<div class="destinations">
-<div class="dest-card">
-<img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470">
-<div class="info"><h3>海岸線陪伴時光</h3></div>
+<div class="pricing">
+<div class="plan">
+<h3>半日陪伴</h3>
+<div class="price">NT$3,200</div>
+<p>城市慢步、咖啡聊天、景點陪伴</p>
 </div>
 
-<div class="dest-card">
-<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
-<div class="info"><h3>森林步道療癒</h3></div>
+<div class="plan popular">
+<h3>一日旅程（主推）</h3>
+<div class="price">NT$5,800</div>
+<p>完整陪伴 + 行程規劃 + 攝影紀錄</p>
 </div>
 
-<div class="dest-card">
-<img src="https://images.unsplash.com/photo-1494526585095-c41746248156">
-<div class="info"><h3>城市慢步旅行</h3></div>
+<div class="plan">
+<h3>深度訂製行程</h3>
+<div class="price">NT$8,800 起</div>
+<p>專屬設計、接送安排、彈性規劃</p>
 </div>
 </div>
 </section>
 
-<!-- FEATURES -->
+<!-- TESTIMONIAL -->
 <section>
 <div class="section-title">
-<h2>我們的服務方式</h2>
+<h2>旅人故事</h2>
 </div>
 
-<div class="features">
-<div class="feature">🌿 朋友式陪伴旅遊</div>
-<div class="feature">📸 旅程紀錄拍攝</div>
-<div class="feature">🚗 私人接送安排</div>
-<div class="feature">🗺️ 客製化行程設計</div>
-</div>
-</section>
-
-<!-- GALLERY -->
-<section>
-<div class="section-title">
-<h2>旅途片段</h2>
-<p>在故事開始之前</p>
+<div class="testimonials">
+<div class="testimonial">
+<p>「原本只是想找人帶路，結果像認識了一位朋友。」</p>
+<div class="name">— Kenji｜日本</div>
 </div>
 
-<div class="gallery">
-<img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e">
-<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
-<img src="https://images.unsplash.com/photo-1469854523086-a3bbc9d36736">
-<img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429">
+<div class="testimonial">
+<p>「旅程很自然，不尷尬，也沒有壓力。」</p>
+<div class="name">— Michael｜新加坡</div>
+</div>
+
+<div class="testimonial">
+<p>「謝謝那天的陪伴，讓台灣變得溫柔。」</p>
+<div class="name">— Yumi｜東京</div>
+</div>
 </div>
 </section>
 
 <!-- CTA -->
-<section class="cta">
-<p>旅途從一段對話開始</p>
-<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">加入 LINE 開始旅程</a>
+<section style="text-align:center;padding-bottom:100px">
+<p style="margin-bottom:16px;font-size:1.1rem">讓旅程從對話開始</p>
+<a class="btn-main" href="https://line.me/R/ti/p/@095wdniw" target="_blank">立即預約</a>
 </section>
+
+<script>
+let slides=document.querySelectorAll('.slide');
+let index=0;
+setInterval(()=>{
+  slides[index].classList.remove('active');
+  index=(index+1)%slides.length;
+  slides[index].classList.add('active');
+},5000);
+</script>
 
 </body>
 </html>
